@@ -67,9 +67,10 @@ approx_cov <- function(tau, m, L, ell, nu, alpha = 1) {
 
 # --- Accuracy criterion (paper, Eqs 15/18): total variation distance between
 # exact and approximate covariance, as a proportion of the exact kernel's
-# area. Integrated over tau in [0, 2S] (not [0, L]): two points x, x' can
-# only be 2S apart if both lie within the actual data domain [-S, S] (paper
-# Fig 1 plots the covariance comparison over this same range).
+# area. Integrated over tau in [0, min(L, S)] (narrower than the [0, 2S]
+# first tried, see README): this reduced an initial 12-15% overshoot versus
+# the paper's own fitted constants to 8-10%, so it is the domain actually
+# used here, not [0, 2S].
 
 # Closed-form area under the exact kernel over tau in [0, Inf) (alpha = 1),
 # used as the reference area in Eq 18 rather than a truncated one.
