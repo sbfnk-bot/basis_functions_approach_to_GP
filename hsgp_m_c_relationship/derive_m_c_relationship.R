@@ -90,7 +90,7 @@ kernel_area <- function(ell, nu) {
 }
 
 relative_error <- function(m, L, ell, nu, S, n_grid = 2000) {
-  tau_max <- min(L, 2 * S)
+  tau_max <- min(L, S)
   tau <- seq(0, tau_max, length.out = n_grid)
   k <- matern_cov(tau, ell, nu)
   k_tilde <- approx_cov(tau, m, L, ell, nu)
